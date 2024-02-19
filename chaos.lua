@@ -84,6 +84,14 @@ function chaos.tnt_tracker(player, duration)
     place_tnt(player:get_player_name())
 end
 
+-- Spawn some vexes near the player
+function chaos.victory_for_vexes(player, duration)
+    local pos = player:get_pos()
+    for _ = 1,math.random(1, 5) do
+        mcl_mobs.spawn(pos, "mobs_mc:vex")
+    end
+end
+
 -- Table containing all the chaos functions
 chaos.chaos = {
     {msg = "Falling Up", func = chaos.falling_up},
@@ -91,4 +99,5 @@ chaos.chaos = {
     {msg = "Mobile games rock!", func = chaos.mobile_games_rock},
     {msg = "Potion overdose!", func = chaos.overdose},
     {msg = "TNT Tracker.", func = chaos.tnt_tracker},
+    {msg = "Victory for vexes!", func = chaos.victory_for_vexes},
 }
