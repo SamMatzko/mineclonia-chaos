@@ -42,6 +42,23 @@ function chaos.mobile_games_rock(player, duration)
     minetest.after(duration, remove_mobile_games_rock, player:get_player_name(), hud)
 end
 
+-- Apply every potion's maximum effect to the player
+function chaos.overdose(player, duration)
+    mcl_potions.healing_func(player, 20)
+    mcl_potions.swiftness_func(player, 5, duration)
+    mcl_potions.leaping_func(player, 5, duration)
+    mcl_potions.weakness_func(player, 5, duration)
+    mcl_potions.strength_func(player, 5, duration)
+    mcl_potions.withering_func(player, 5, duration)
+    mcl_potions.poison_func(player, 5, duration)
+    mcl_potions.regeneration_func(player, 5, duration)
+    mcl_potions.invisiblility_func(player, 5, duration)
+    mcl_potions.water_breathing_func(player, 5, duration)
+    mcl_potions.fire_resistance_func(player, 5, duration)
+    mcl_potions.night_vision_func(player, 5, duration)
+    mcl_potions.bad_omen_func(player, 5, duration)
+end
+
 -- Spawn TNT at the player's position at regular intervals
 function chaos.tnt_tracker(player, duration)
 
@@ -72,5 +89,6 @@ chaos.chaos = {
     {msg = "fAlLiNg Up", func = chaos.falling_up},
     {msg = "Inertia... fundamental physics!", func = chaos.inertia},
     {msg = "Mobile games rock!", func = chaos.mobile_games_rock},
+    {msg = "Potion overdose!", func = chaos.overdose},
     {msg = "TNT Tracker...", func = chaos.tnt_tracker},
 }

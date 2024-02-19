@@ -50,7 +50,7 @@ local function step_timer()
         local chaos_to_do = chaos.chaos[cindex]
 
         -- TESTING ONLY
-        -- chaos_to_do = chaos.chaos[1]
+        -- chaos_to_do = chaos.chaos[4]
 
         minetest.log(chaos_to_do.msg)
 
