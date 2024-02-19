@@ -33,25 +33,18 @@ end
 -- Called when a player joins. This starts the chaos after at least one person is in the world.
 local function start_chaos(player, last_login)
 
-    -- Get the list of connected players
-    local players = minetest.get_connected_players()
-
-    -- Give each player a hud for showing the progress of the timer
-    for i, p in ipairs(players) do
-        local hud = p:hud_add({
-            hud_elem_type = "image",
-            alignment = {x = 1, y = 1},
-            text = "chaos_progress.png",
-            scale = {x = -0, y = -2},
-            z_index = 1000,
-        })
-        player_huds[p:get_player_name()] = hud
-    end
-
-    -- Start the timer
-    minetest.after(1, step_timer)
+    -- Give this player a hud
+    local hud = player:hud_add({
+        hud_elem_type = "image",
+        alignment = {x = 1, y = 1},
+        text = "chaos_progress.png",
+        scale = {x = -0, y = -2},
+        z_index = 1000,
+    })
+    player_huds[player:get_player_name()] = hud
 end
 
 -- Register callbacks
 minetest.register_on_joinplayer(start_chaos)
 minetest.register_on_leaveplayer(remove_player)
+minetest.register_on_mods_loaded(step_timer)
