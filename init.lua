@@ -2,7 +2,7 @@ local modpath = core.get_modpath(core.get_current_modname())
 dofile(modpath.."/chaos.lua")
 
 -- Variables used throughout these functions
-local TIMER_LEN = 3
+local TIMER_LEN = 10
 local player_huds = {}
 local timer = 1
 
@@ -15,9 +15,14 @@ local function add_player(player, last_login)
         alignment = {x = 1, y = 1},
         text = "chaos_progress.png",
         scale = {x = -0, y = -2},
-        z_index = 1000,
+        z_index = 1100,
     })
     player_huds[player:get_player_name()] = hud
+
+    -- Clear any physics modifications from this mod left over from last login
+    playerphysics.remove_physics_factor(player, "gravity", "chaos")
+    playerphysics.remove_physics_factor(player, "speed", "chaos")
+    playerphysics.remove_physics_factor(player, "jump", "chaos")
 end
 
 -- Called when a player leaves. This removes the player's hud data from player_huds.
@@ -43,10 +48,14 @@ local function step_timer()
         -- Choose a random chaos
         local cindex = math.random(1, #chaos.chaos)
         local chaos_to_do = chaos.chaos[cindex]
+
+        -- TESTING ONLY
+        -- chaos_to_do = chaos.chaos[1]
+
         minetest.log(chaos_to_do.msg)
 
         -- Loop through the players and apply the effect
-        for i, player in minetest.get_connected_players() do
+        for i, player in ipairs(minetest.get_connected_players()) do
             chaos_to_do.func(player, TIMER_LEN)
         end
 
