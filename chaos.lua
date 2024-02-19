@@ -2,7 +2,7 @@ chaos = {}
 
 -- Invert player gravity
 function chaos.falling_up(player, duration)
-    playerphysics.add_physics_factor(player, "gravity", "chaos", -9.81)
+    playerphysics.add_physics_factor(player, "gravity", "chaos", -0.5)
     local function remove_falling_up(pname)
         local p = minetest.get_player_by_name(pname)
         playerphysics.remove_physics_factor(player, "gravity", "chaos")
@@ -86,9 +86,9 @@ end
 
 -- Table containing all the chaos functions
 chaos.chaos = {
-    {msg = "fAlLiNg Up", func = chaos.falling_up},
-    {msg = "Inertia... fundamental physics!", func = chaos.inertia},
+    {msg = "Falling Up", func = chaos.falling_up},
+    {msg = "Inertia: fundamental physics!", func = chaos.inertia},
     {msg = "Mobile games rock!", func = chaos.mobile_games_rock},
     {msg = "Potion overdose!", func = chaos.overdose},
-    {msg = "TNT Tracker...", func = chaos.tnt_tracker},
+    {msg = "TNT Tracker.", func = chaos.tnt_tracker},
 }

@@ -2,7 +2,7 @@ local modpath = core.get_modpath(core.get_current_modname())
 dofile(modpath.."/chaos.lua")
 
 -- Variables used throughout these functions
-local TIMER_LEN = 10
+local TIMER_LEN = 30
 local player_huds = {}
 local timer = 1
 
@@ -50,7 +50,7 @@ local function step_timer()
         local chaos_to_do = chaos.chaos[cindex]
 
         -- TESTING ONLY
-        -- chaos_to_do = chaos.chaos[4]
+        -- chaos_to_do = chaos.chaos[1]
 
         minetest.log(chaos_to_do.msg)
 
