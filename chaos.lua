@@ -1,5 +1,22 @@
 chaos = {}
 
+-- Spawns lots of sheep at the player's location
+function chaos.counting_sheep(player, duration)
+    local function spawn_sheepies(pname)
+        local p = minetest.get_player_by_name(pname)
+        local pos = p:get_pos()
+        for _ = 1,20 do
+            mcl_mobs.spawn(pos, "mobs_mc:sheep")
+        end
+    end
+    local split_duration = math.floor(duration / 3)
+    local pname = player:get_player_name()
+    spawn_sheepies(pname)
+    minetest.after(split_duration, spawn_sheepies, pname)
+    minetest.after(2*split_duration, spawn_sheepies, pname)
+    minetest.after(3*split_duration, spawn_sheepies, pname)
+end
+
 -- Invert player gravity
 function chaos.falling_up(player, duration)
     playerphysics.add_physics_factor(player, "gravity", "chaos", -0.5)
@@ -8,6 +25,14 @@ function chaos.falling_up(player, duration)
         playerphysics.remove_physics_factor(player, "gravity", "chaos")
     end
     minetest.after(duration, remove_falling_up, player:get_player_name())
+end
+
+-- Spawn some skeletons near the player
+function chaos.feel_it_in_your_bones(player, duration)
+    local pos = player:get_pos()
+    for _ = 1,math.random(1, 5) do
+        mcl_mobs.spawn(pos, "mobs_mc:skeleton")
+    end
 end
 
 -- Freeze the player in the current velocity
@@ -84,20 +109,13 @@ function chaos.tnt_tracker(player, duration)
     place_tnt(player:get_player_name())
 end
 
--- Spawn some vexes near the player
-function chaos.victory_for_vexes(player, duration)
-    local pos = player:get_pos()
-    for _ = 1,math.random(1, 5) do
-        mcl_mobs.spawn(pos, "mobs_mc:vex")
-    end
-end
-
 -- Table containing all the chaos functions
 chaos.chaos = {
+    {msg = "Counting sheep!", func = chaos.counting_sheep},
     {msg = "Falling Up", func = chaos.falling_up},
+    {msg = "Feel it in your bones.", func = chaos.feel_it_in_your_bones},
     {msg = "Inertia: fundamental physics!", func = chaos.inertia},
     {msg = "Mobile games rock!", func = chaos.mobile_games_rock},
     {msg = "Potion overdose!", func = chaos.overdose},
     {msg = "TNT Tracker.", func = chaos.tnt_tracker},
-    {msg = "Victory for vexes!", func = chaos.victory_for_vexes},
 }
