@@ -2,7 +2,7 @@ local modpath = core.get_modpath(core.get_current_modname())
 dofile(modpath.."/chaos.lua")
 
 -- Variables used throughout these functions
-local TIMER_LEN = 30
+local TIMER_LEN = tonumber(minetest.settings:get("chaos_timer_seconds")) or 30
 local player_huds = {}
 local timer = 1
 
@@ -52,11 +52,14 @@ local function step_timer()
         -- TESTING ONLY
         -- chaos_to_do = chaos.chaos[1]
 
-        minetest.log(chaos_to_do.msg)
+        -- Make sure that the effect exists before trying to apply it
+        if chaos_to_do ~= nil then
+            minetest.log(chaos_to_do.msg)
 
-        -- Loop through the players and apply the effect
-        for i, player in ipairs(minetest.get_connected_players()) do
-            chaos_to_do.func(player, TIMER_LEN)
+            -- Loop through the players and apply the effect
+            for _, player in ipairs(minetest.get_connected_players()) do
+                chaos_to_do.func(player, TIMER_LEN)
+            end
         end
 
         -- Reset the timer

@@ -110,12 +110,33 @@ function chaos.tnt_tracker(player, duration)
 end
 
 -- Table containing all the chaos functions
-chaos.chaos = {
-    {msg = "Counting sheep!", func = chaos.counting_sheep},
-    {msg = "Falling Up", func = chaos.falling_up},
-    {msg = "Feel it in your bones.", func = chaos.feel_it_in_your_bones},
-    {msg = "Inertia: fundamental physics!", func = chaos.inertia},
-    {msg = "Mobile games rock!", func = chaos.mobile_games_rock},
-    {msg = "Potion overdose!", func = chaos.overdose},
-    {msg = "TNT Tracker.", func = chaos.tnt_tracker},
-}
+chaos.chaos = {} -- table
+local chaos_counting_sheep = minetest.settings:get_bool("chaos_counting_sheep", true)
+local chaos_falling_up = minetest.settings:get_bool("chaos_falling_up", true)
+local chaos_feel_it_in_your_bones = minetest.settings:get_bool("chaos_feel_it_in_your_bones", true)
+local chaos_inertia = minetest.settings:get_bool("chaos_inertia", true)
+local chaos_mobile_games_rock = minetest.settings:get_bool("chaos_mobile_games_rock", true)
+local chaos_overdose = minetest.settings:get_bool("chaos_overdose", true)
+local chaos_tnt_tracker = minetest.settings:get_bool("chaos_tnt_tracker", true)
+
+if chaos_counting_sheep then
+    table.insert(chaos.chaos, {msg = "Counting sheep!", func = chaos.counting_sheep})
+end
+if chaos_falling_up then
+    table.insert(chaos.chaos, {msg = "Falling Up", func = chaos.falling_up})
+end
+if chaos_feel_it_in_your_bones then
+    table.insert(chaos.chaos, {msg = "Feel it in your bones.", func = chaos.feel_it_in_your_bones})
+end
+if chaos_inertia then
+    table.insert(chaos.chaos, {msg = "Inertia: fundamental physics!", func = chaos.inertia})
+end
+if chaos_mobile_games_rock then
+    table.insert(chaos.chaos, {msg = "Mobile games rock!", func = chaos.mobile_games_rock})
+end
+if chaos_overdose then
+    table.insert(chaos.chaos, {msg = "Potion overdose!", func = chaos.overdose})
+end
+if chaos_tnt_tracker then
+    table.insert(chaos.chaos, {msg = "TNT Tracker.", func = chaos.tnt_tracker})
+end
