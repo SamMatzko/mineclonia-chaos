@@ -7,4 +7,5 @@ chaos_feel_it_in_your_bones (Feel it in your bones.) bool true
 chaos_inertia (Inertia: fundamental physics!) bool true
 chaos_mobile_games_rock (Mobile games rock!) bool true
 chaos_overdose (Potion overdose!) bool true
+chaos_strike (Strike!) bool true
 chaos_tnt_tracker (TNT Tracker.) bool true

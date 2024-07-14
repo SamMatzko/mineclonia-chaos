@@ -84,6 +84,11 @@ function chaos.overdose(player, duration)
     mcl_potions.bad_omen_func(player, 5, duration)
 end
 
+-- Strike the player with lightning
+function chaos.strike(player, duration)
+    mcl_lightning.strike(player:get_pos())
+end
+
 -- Spawn TNT at the player's position at regular intervals
 function chaos.tnt_tracker(player, duration)
 
@@ -117,6 +122,7 @@ local chaos_feel_it_in_your_bones = minetest.settings:get_bool("chaos_feel_it_in
 local chaos_inertia = minetest.settings:get_bool("chaos_inertia", true)
 local chaos_mobile_games_rock = minetest.settings:get_bool("chaos_mobile_games_rock", true)
 local chaos_overdose = minetest.settings:get_bool("chaos_overdose", true)
+local chaos_strike = minetest.settings:get_bool("chaos_strike", true)
 local chaos_tnt_tracker = minetest.settings:get_bool("chaos_tnt_tracker", true)
 
 if chaos_counting_sheep then
@@ -136,6 +142,9 @@ if chaos_mobile_games_rock then
 end
 if chaos_overdose then
     table.insert(chaos.chaos, {msg = "Potion overdose!", func = chaos.overdose})
+end
+if chaos_strike then
+    table.insert(chaos.chaos, {msg = "Strike!", func = chaos.strike})
 end
 if chaos_tnt_tracker then
     table.insert(chaos.chaos, {msg = "TNT Tracker.", func = chaos.tnt_tracker})
