@@ -19,7 +19,7 @@ end
 
 -- Invert player gravity
 function chaos.falling_up(player, duration)
-    playerphysics.add_physics_factor(player, "gravity", "chaos", -0.5)
+    playerphysics.add_physics_factor(player, "gravity", "chaos", -0.1)
     local function remove_falling_up(pname)
         local p = minetest.get_player_by_name(pname)
         playerphysics.remove_physics_factor(player, "gravity", "chaos")
