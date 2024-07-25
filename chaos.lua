@@ -86,7 +86,15 @@ end
 
 -- Strike the player with lightning
 function chaos.strike(player, duration)
-    mcl_lightning.strike(player:get_pos())
+    local pos = player:get_pos()
+    for i = 1, 5 do
+        local new_pos = {
+            x = math.random(-9, 9) + pos.x,
+            y = pos.y,
+            z = math.random(-9, 9) + pos.z,
+        }
+        mcl_lightning.strike(new_pos)
+    end
 end
 
 -- Spawn TNT at the player's position at regular intervals
