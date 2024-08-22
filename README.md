@@ -4,6 +4,8 @@
 
 This mod causes random chaotic things to happen at regular intervals. Each event can be turned on and off individually in settings, and the timer length is also customizable. It is designed for Mineclonia, but it might(?) also work with VoxeLibre with some modifications.
 
+**DO BE AWARE** that this can damage your creations, so only add it to worlds that don't have special builds. Alternatively, you can turn off any events that might damage your worlds.
+
 ## Events
 
 If you have any suggestions for chaotic events, feel free to [open an issue](https://github.com/SamMatzko/mineclonia-chaos/issues/new/choose)!
