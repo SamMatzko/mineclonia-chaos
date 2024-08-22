@@ -1,11 +1,19 @@
 # The amount of time between each chaotic event, in seconds.
 chaos_timer_seconds (Chaos Timer) int 30
 
+# Spawns lots of sheep at the player's location
 chaos_counting_sheep (Counting sheep!) bool true
+# Inverts player's gravity
 chaos_falling_up (Falling Up) bool true
+# Spawns some skeletons near the player
 chaos_feel_it_in_your_bones (Feel it in your bones.) bool true
+# Freezes the player at the current speed and direction
 chaos_inertia (Inertia: fundamental physics!) bool true
+# Converts the player's screen to mobile size
 chaos_mobile_games_rock (Mobile games rock!) bool true
+# Applies every potion's maximum effect to the player
 chaos_overdose (Potion overdose!) bool true
+# Makes lightning strike near the player
 chaos_strike (Strike!) bool true
+# Spawns TNT at the player's location
 chaos_tnt_tracker (TNT Tracker.) bool true
