@@ -24,7 +24,7 @@ function chaos.falling_up(player, duration)
         local p = minetest.get_player_by_name(pname)
         playerphysics.remove_physics_factor(player, "gravity", "chaos")
     end
-    minetest.after(duration, remove_falling_up, player:get_player_name())
+    minetest.after(duration - 1, remove_falling_up, player:get_player_name())
 end
 
 -- Spawn some skeletons near the player
@@ -44,7 +44,7 @@ function chaos.inertia(player, duration)
         playerphysics.remove_physics_factor(player, "speed", "chaos")
         playerphysics.remove_physics_factor(player, "jump", "chaos")
     end
-    minetest.after(duration, remove_inertia, player:get_player_name())
+    minetest.after(duration - 1, remove_inertia, player:get_player_name())
 end
 
 -- Block the player's screen with a phone screen shape
@@ -64,7 +64,7 @@ function chaos.mobile_games_rock(player, duration)
         local player = minetest.get_player_by_name(pname)
         player:hud_remove(hud)
     end
-    minetest.after(duration, remove_mobile_games_rock, player:get_player_name(), hud)
+    minetest.after(duration - 1, remove_mobile_games_rock, player:get_player_name(), hud)
 end
 
 -- Apply every potion's maximum effect to the player
@@ -123,7 +123,7 @@ function chaos.tnt_tracker(player, duration)
 end
 
 -- Table containing all the chaos functions
-chaos.chaos = {} -- table
+chaos.chaos = {}
 local chaos_counting_sheep = minetest.settings:get_bool("chaos_counting_sheep", true)
 local chaos_falling_up = minetest.settings:get_bool("chaos_falling_up", true)
 local chaos_feel_it_in_your_bones = minetest.settings:get_bool("chaos_feel_it_in_your_bones", true)

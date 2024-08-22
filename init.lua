@@ -49,17 +49,19 @@ local function step_timer()
         local cindex = math.random(1, #chaos.chaos)
         local chaos_to_do = chaos.chaos[cindex]
 
-        -- TESTING ONLY
-        -- chaos_to_do = chaos.chaos[1]
-
         -- Make sure that the effect exists before trying to apply it
         if chaos_to_do ~= nil then
-            minetest.log(chaos_to_do.msg)
 
-            -- Loop through the players and apply the effect
-            for _, player in ipairs(minetest.get_connected_players()) do
-                chaos_to_do.func(player, TIMER_LEN)
+            -- Apply the effect when the timer starts at the beginning again (after 1 second)
+            local function do_chaos()
+                minetest.log(chaos_to_do.msg)
+
+                -- Loop through the players and apply the effect
+                for _, player in ipairs(minetest.get_connected_players()) do
+                    chaos_to_do.func(player, TIMER_LEN)
+                end
             end
+            minetest.after(1, do_chaos)
         end
 
         -- Reset the timer
