@@ -22,4 +22,4 @@ This is a list of all the current chaotic events:
 - **"TNT Tracker."** Spawns TNT at the player's location.
 
 ## License
-This mod is licensed under the [AGPL-3.0](https://github.com/SamMatzko/mineclonia-chaos/blob/master/LICENSE.txt).
+The code is licensed under the [AGPL-3.0](https://github.com/SamMatzko/mineclonia-chaos/blob/master/LICENSE.txt). Media is licensed under the [CC-BY-SA-3.0](http://creativecommons.org/licenses/by-sa/3.0/).
