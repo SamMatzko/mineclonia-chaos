@@ -97,29 +97,14 @@ function chaos.strike(player, duration)
     end
 end
 
--- Spawn TNT at the player's position at regular intervals
+-- Spawn TNT at the player's location
 function chaos.tnt_tracker(player, duration)
-
-    -- Create a timer to make sure this effect is disabled after the duration is up
-    local timer = duration
-
-    -- The function that places TNT
-    local function place_tnt(pname)
-        local p = minetest.get_player_by_name(pname)
-        local pos = p:get_pos()
-        minetest.sound_play("tnt_ignite", {pos = pos, gain = 1.0, max_hear_distance = 15}, true)
-        local ent = minetest.add_entity(pos, "mcl_tnt:tnt")
-        if ent then
-            ent:set_armor_groups({immortal = 1})
-        end
-        timer = timer - 1
-        if timer > 0 then
-            minetest.after(1, place_tnt, pname)
-        end
+    local pos = player:get_pos()
+    minetest.sound_play("tnt_ignite", {pos = pos, gain = 1.0, max_hear_distance = 15}, true)
+    local ent = minetest.add_entity(pos, "mcl_tnt:tnt")
+    if ent then
+        ent:set_armor_groups({immortal = 1})
     end
-
-    -- Start placing TNT
-    place_tnt(player:get_player_name())
 end
 
 -- Table containing all the chaos functions
