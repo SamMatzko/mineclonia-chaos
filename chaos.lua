@@ -2,19 +2,10 @@ chaos = {}
 
 -- Spawns lots of sheep at the player's location
 function chaos.counting_sheep(player, duration)
-    local function spawn_sheepies(pname)
-        local p = minetest.get_player_by_name(pname)
-        local pos = p:get_pos()
-        for _ = 1,20 do
-            mcl_mobs.spawn(pos, "mobs_mc:sheep")
-        end
+    local pos = player:get_pos()
+    for _ = 1,20 do
+        mcl_mobs.spawn(pos, "mobs_mc:sheep")
     end
-    local split_duration = math.floor(duration / 3)
-    local pname = player:get_player_name()
-    spawn_sheepies(pname)
-    minetest.after(split_duration, spawn_sheepies, pname)
-    minetest.after(2*split_duration, spawn_sheepies, pname)
-    minetest.after(3*split_duration, spawn_sheepies, pname)
 end
 
 -- Invert player gravity
