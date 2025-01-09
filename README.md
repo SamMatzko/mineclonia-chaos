@@ -1,3 +1,4 @@
+# This repository has been moved to [Codeberg](https://codeberg.org/SamMatzko/mineclonia-chaos).
 ![Chaos Mod](https://github.com/SamMatzko/mineclonia-chaos/blob/master/screenshot.png)
 
 # [Mineclonia](https://content.minetest.net/packages/ryvnf/mineclonia/) Chaos
